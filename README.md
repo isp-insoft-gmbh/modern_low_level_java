@@ -10,6 +10,34 @@ Frameworks). Allerdings fußen all diese Tools auf einem Fundament: der JDK.
 
 Deshalb lohnt es sich ein solides Verständnis der JDK zu erlangen.
 
+## Versionskontrolle
+
+Offensichtlich wird dieses Projekt in GIT getrackt.
+Damit du deinen Code sichern und zeigen kannst, erstelle einen eigenen Branch
+und nutze diesen während des Kurses, um deinen Fortschritt zu synchronisieren.
+
+```sh
+# branch erstellen
+git branch NAME
+# zum branch wechseln
+git switch NAME
+# lokalen commit erzeugen mit allen lokalen Änderungen
+git commit --all
+# branch hochladen
+git push origin NAME
+# branch herunterladen
+git pull origin NAME
+```
+
+Der normale GIT-Workflow ist: PULL -> COMMIT,COMMIT,COMMIT,... -> PUSH.
+Nutze ihn während des Kurses, von der Konsole aus!
+
+**Quellen**:
+- [Git for Windows](https://git-scm.com/downloads/win)
+- [Git Crash Course](https://www.youtube.com/watch?v=vA5TTz6BXhY)
+- [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/#summary)
+- [No Longer My Favorite Git Commit](https://mtlynch.io/no-longer-my-favorite-git-commit/)
+
 ## Der Plan
 
 Wir entwickeln eine Webserver-Applikation, die eine CSV-Datei entgegen nimmt und
