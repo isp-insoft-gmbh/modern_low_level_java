@@ -10,6 +10,9 @@ Frameworks). Allerdings fußen all diese Tools auf einem Fundament: der JDK.
 
 Deshalb lohnt es sich ein solides Verständnis der JDK zu erlangen.
 
+Es gibt keine Regeln bezüglich Hilfsmittel und/oder Kooperation.
+Gerne kann eine KI oder Kolleg:innen zu Rate gezogen werden!
+
 ## Versionskontrolle
 
 Offensichtlich wird dieses Projekt in GIT getrackt.
