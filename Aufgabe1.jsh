@@ -28,5 +28,3 @@ String[][] parseCsv(String CsvContent) throws IllegalArgumentException {
     }
     return parsedCsv;
 }
-String CsvContent = new String("sp1;sp2;sp3;sp4\nasdfafsd;aasdfasdf;asdfasdf;asdfsadf\nasdfdasf;asdfasdf;asdfsdaf;asdfasdf\nasdfasdfsdf;asdfsadf;asdfasdf;aasdfsdaf");
-Arrays.deepToString(parseCsv(CsvContent));
