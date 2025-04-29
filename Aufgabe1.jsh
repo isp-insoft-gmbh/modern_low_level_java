@@ -1,29 +1,29 @@
-String[][] parseCsv(String CsvContent) throws IllegalArgumentException {
+String[][] parseCsv(String csvContent) throws IllegalArgumentException {
     // Argument in Zeilen am Newline zerlegen
-    String[] CsvRows = CsvContent.split("\n");
+    String[] csvRows = csvContent.split(System.lineSeparator());
 
     int maxColumns = 0;
 
     // maximale Spaltenanzahl ermitteln, falls es Zeilen mit unerschiedlicher Anzahl Spalten gibt
-    for (int aktuelleZeile = 0; aktuelleZeile < CsvRows.length; aktuelleZeile++) {
-        int ZaehlerAktuell = 0;
-        String[] RowColumnValues = CsvRows[aktuelleZeile].split(";");
-        ZaehlerAktuell = RowColumnValues.length;
+    for (int aktuelleZeile = 0; aktuelleZeile < csvRows.length; aktuelleZeile++) {
+        int zaehlerAktuell = 0;
+        String[] rowColumnValues = csvRows[aktuelleZeile].split(";");
+        zaehlerAktuell = rowColumnValues.length;
 
         // wenn letzte maximale Spaltenzahl weniger als die aktuelle ist, die neue maximal Menge merken
-        if (ZaehlerAktuell > maxColumns) {
-            maxColumns = ZaehlerAktuell;
+        if (zaehlerAktuell > maxColumns) {
+            maxColumns = zaehlerAktuell;
         }
     }
    // jetzt ist die Größe für die Zweite Dimension des Rückgabearrays bekannt
-   // die erste kommt aus der Länge des Arrays CsvRows
-   String[][] parsedCsv = new String[CsvRows.length][maxColumns];
+   // die erste kommt aus der Länge des Arrays csvRows
+   String[][] parsedCsv = new String[csvRows.length][maxColumns];
 
-   for (int Zeile = 0; Zeile < CsvRows.length; Zeile++) {
-        String[] RowColumnValues = CsvRows[Zeile].split(";");
+   for (int zeile = 0; zeile < csvRows.length; zeile++) {
+        String[] rowColumnValues = csvRows[zeile].split(";");
 
-        for (int Spalte = 0; Spalte < RowColumnValues.length; Spalte++) {
-            parsedCsv[Zeile][Spalte] = RowColumnValues[Spalte];
+        for (int spalte = 0; spalte < rowColumnValues.length; spalte++) {
+            parsedCsv[zeile][spalte] = rowColumnValues[spalte];
         }
     }
     return parsedCsv;
