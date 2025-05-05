@@ -25,3 +25,6 @@ replay_pid*
 startjshell.sh
 test.jsh
 scratch.txt
+jdk24Path.sh
+build.sh
+mods/*
