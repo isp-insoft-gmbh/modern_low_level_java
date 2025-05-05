@@ -1,0 +1,3 @@
+# bauen der Module
+javac("-d","mods/de.rachel.lib","src/de.rachel.lib/module-info.java","src/de.rachel.lib/aufgabe/zwei/ParseCsv.java")
+javac("--module-path","mods","-d","mods/de.rachel.cli","src/de.rachel.cli/module-info.java","src/de.rachel.cli/RachelCli.java")
