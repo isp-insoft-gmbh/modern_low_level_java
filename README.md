@@ -24,6 +24,8 @@ und nutze diesen während des Kurses, um deinen Fortschritt zu synchronisieren.
 git branch NAME
 # zum branch wechseln
 git switch NAME
+# unversionierte Änderungen zu git hinzufügen
+git add .
 # lokalen commit erzeugen mit allen lokalen Änderungen
 git commit --all
 # branch hochladen
