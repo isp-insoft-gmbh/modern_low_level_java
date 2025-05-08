@@ -7,7 +7,8 @@ macel; 8; 900; 0; alive
 katze; 9999; 9999; 9999; god
 """;
 
-final var weatherStations = java.
+final var weatherStationsPath = java.nio.file.Paths.get("weather_stations.csv");
+final var weatherStations = java.nio.file.Files.readString(weatherStationsPath);
 
 String[][] parseCsv( String input ) throws IllegalArgumentException {
     if( input.isEmpty() ) return new String[0][0];
@@ -15,26 +16,23 @@ String[][] parseCsv( String input ) throws IllegalArgumentException {
     final char lineDelimiter = '\n';
     int row = 0;
     int column = 0;
-    int maxRow = 1;
     int maxColumn = 1;
+    int maxRow = 0;
     final char[] inputChars = input.toCharArray();
     for ( char c : inputChars ) {
-        if ( maxRow == 1 && c == cellDelimiter ) maxColumn++;
-        if ( c == lineDelimiter ) maxRow++;   
+        if ( maxRow == 0 && c == cellDelimiter ) maxColumn++;
+        if ( c == lineDelimiter ) maxRow++;
     } 
-    // println("creating buffer %sx%s (column X row)".formatted(maxColumn, maxRow));
     final var buffer = new String[maxColumn][maxRow];
     final var cellBuffer = new StringBuilder();
     for ( char c : inputChars ) {
         switch (c) {
             case cellDelimiter -> { 
-              // println("new column found, adding cell to %sx%s (column X row)".formatted(column, row));
               buffer[column][row] = cellBuffer.toString().strip();
               cellBuffer.delete(0,cellBuffer.length());
               column++;
             }
             case lineDelimiter -> {
-              // println("new row found, adding cell to %sx%s (column X row)".formatted(column, row));
               buffer[column][row] = cellBuffer.toString().strip();
               cellBuffer.delete(0, cellBuffer.length());
               column = 0;
@@ -43,6 +41,7 @@ String[][] parseCsv( String input ) throws IllegalArgumentException {
             case '\r' -> {/* skip. this handles win32 newlines */}
             default -> cellBuffer.append(c);
         }
+        if( column > maxColumn ) throw new IllegalArgumentException("Maximum number of columns %d, as defined in header, exceeded in row %d!".formatted(maxColumn, row));
     }
     return buffer;
 }
