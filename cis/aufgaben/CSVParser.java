@@ -21,8 +21,8 @@ public class CSVParser {
     return table;
   }
 
-  public static void Test(){
-    String sampleCSV = "name;age;city\nAlice;30;Berlin\nBob;25;Paris";
+  public static void main(String[] sample){
+    String sampleCSV = sample.length == 0 ? "name;age;city\nAlice;30;Berlin\nBob;25;Paris" : sample[0];
     parseCSV(sampleCSV);
   }
 }
