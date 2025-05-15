@@ -5,9 +5,9 @@ import java.util.Arrays;
 
 public class RachelCli {
         public static void main(String[] args) {
-            ParseCsv ObjectForParsing = new ParseCsv();
+            ParseCsv objectForParsing = new ParseCsv();
             
-            String[][] parsedValue = ObjectForParsing.parseCsv("sp1;sp2;sp3\naksdjfldsaf;askdfjasdfj;sadkfjasdjkf\naksdfjads;askdjfdsakjf;sdkfjsadkf\nalksdjfasdf;asdfd;sadfsadf");
+            String[][] parsedValue = objectForParsing.parseCsv("sp1;sp2;sp3\naksdjfldsaf;askdfjasdfj;sadkfjasdjkf\naksdfjads;askdjfdsakjf;sdkfjsadkf\nalksdjfasdf;asdfd;sadfsadf");
             
             System.out.println(Arrays.deepToString(parsedValue));
         }

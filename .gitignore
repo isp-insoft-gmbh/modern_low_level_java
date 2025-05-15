@@ -27,4 +27,4 @@ test.jsh
 scratch.txt
 jdk24Path.sh
 build.sh
-mods/*
+Aufgabe2/mods/*

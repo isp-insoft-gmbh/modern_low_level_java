@@ -1,0 +1,9 @@
+# bauen des lib Moduls
+javac("-Xlint:all","-d","mods/de.rachel.lib","src/de.rachel.lib/module-info.java","src/de.rachel.lib/aufgabe/zwei/ParseCsv.java")
+
+# bauen einer Testanwendung die das eben erzeugte Modul verwendet
+javac("-Xlint:all","--module-path","mods","-d","mods/de.rachel.cli","src/de.rachel.cli/module-info.java","src/de.rachel.cli/RachelCli.java")
+
+# starten der Testanwendung mit der Angabe wo das Modul zu finden ist, welches verwendet wird
+java --module-path mods -m de.rachel.cli/de.rachel.cli.RachelCli
+
