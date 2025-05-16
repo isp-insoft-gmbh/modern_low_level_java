@@ -44,4 +44,4 @@ void tools() {
       .sorted()
       .forEach(System.out::println);
 }
-javac("-Xlint:all", "-d", "./target/", "--module", "lib", "--module-source-path", "./", "./lib/msc/CSV.java")
+javac("-Xlint:all", "-d", "./target/", "--module", "lib", "--module-source-path", "./")
