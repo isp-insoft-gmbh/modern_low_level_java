@@ -1,4 +1,4 @@
-package de.rachel.cli;
+package cli;
 
 import aufgabe.zwei.ParseCsv;
 import java.util.Arrays;
