@@ -1,0 +1,40 @@
+<init>:
+- <init> ist eine Instanz Initialisierungs Methode die von der JVM aufgerufen wird
+wenn man auf Basis einer Klasse eine Instanz erzeugt
+z.B.
+Object obj = new Object();
+
+- sie entspricht meist dem Konstruktor einer Klasse
+- davon können 0 oder auch mehrer in einer Klasse enthalten sein
+- sie muss void sein (würde man Returndescriptor V erkennen)
+z.B.
+==========
+  public REPL.$JShell$14$R();
+    descriptor: ()V  <=====================hier!
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Record."<init>":()V
+         4: return
+      LineNumberTable:
+        line 5: 0
+==========
+
+- sie muss <init> heissen
+- es gibt sie nur in einer Classe NICHT in einem Interface
+
+============================
+<clinit>
+- es ist eine Class Initialisierungs Methode
+
+- diese Methode wird nur generiert wenn in einer Klasse Static fields oder Static Blöcke
+genutzt werden
+- daraus resultiert das diese Methode von der JVM erst aufgerufen wird, wenn wir die 
+entsprechende Klasse das erste mal benutzen
+- den Aufruf der <clinit> (also einer ECHTEN Class Initialisierungs Methode) passiert NUR
+zur Laufzeit, im Bytecode (angezeigt von javap) kann man sie nicht sehen
+
+- sie hat keinen Rückgabewert!
+- sie hat keine Argumente (seit ClassFile Version 59 und höher)
+- sie hat das Flag ACC_STATIC (seit ClassFile Version 59 und höher)

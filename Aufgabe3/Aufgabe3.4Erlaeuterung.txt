@@ -1,0 +1,9 @@
+Aufgabe3 Punkt 4
+- das der Bytecode der Class B so anders aussieht, hat glaube ich was mit der
+Nutzung eines Supplier und der Verwendung des Lambdaausdrucks für die Erzeugung
+eines Stringobjekts zu tun. Diese Instanzierung einer neue Klasse
+beim Aufruf der Methode get() in Zeile 4, erzeugt diesen massiven Mehrinhalt des
+Bytecodes
+- Ich glaube das ist das was man unter dem "inner Class" Konzept versteht
+- Ich habe das schon mal bei ActionListenern gesehen und genutzt
+- eine namenlose Instanzierung einer Klasse (die wird dann im Bytecode Lambda$... genannt)
