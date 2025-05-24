@@ -1,0 +1,4 @@
+-encoding utf-8
+-d mods
+--module-source-path src
+--module de.rachel.lib

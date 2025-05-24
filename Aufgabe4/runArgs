@@ -1,0 +1,2 @@
+--module-path mods
+-m de.rachel.cli/cli.RachelCli
