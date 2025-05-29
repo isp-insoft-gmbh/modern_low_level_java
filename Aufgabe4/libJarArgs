@@ -1,0 +1,4 @@
+--create
+--verbose
+--file de.rachel.lib.jar
+-C ./mods/de.rachel.lib .

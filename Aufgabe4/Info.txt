@@ -1,0 +1,10 @@
+Key und Store anlegen
+==
+keytool -genkeypair -dname "cn=Normen Rachel, ou=Private, o=Private, c=Germany" -alias ispmodernjava -keyalg rsa -keypass '<password>' -storepass '<password>' -validity 365
+==
+
+jar signieren
+
+==
+jarsigner de.rachel.lib.jar ispmodernjava
+==
