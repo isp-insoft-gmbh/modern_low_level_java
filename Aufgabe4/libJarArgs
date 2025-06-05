@@ -1,4 +1,4 @@
 --create
 --verbose
---file de.rachel.lib.jar
+--file ./jar/de.rachel.lib.jar
 -C ./mods/de.rachel.lib .

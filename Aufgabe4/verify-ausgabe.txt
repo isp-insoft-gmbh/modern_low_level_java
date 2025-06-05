@@ -1,0 +1,48 @@
+jarsigner -verify -J-Duser.language=en -verbose -certs de.rachel.lib.jar
+
+s        297 Thu May 29 20:24:08 CEST 2025 META-INF/MANIFEST.MF
+
+      >>> Signer
+      X.509, CN=Normen Rachel, OU=Private, O=Private, C=Germany
+      Signature algorithm: SHA384withRSA, 3072-bit RSA key
+      [certificate is valid from 29/05/2025, 20:14 to 29/05/2026, 20:14]
+      [Invalid certificate chain: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target]
+
+         502 Thu May 29 20:24:08 CEST 2025 META-INF/ISPMODER.SF
+        1845 Thu May 29 20:24:08 CEST 2025 META-INF/ISPMODER.RSA
+           0 Thu May 29 19:59:38 CEST 2025 META-INF/
+           0 Sat May 24 08:25:24 CEST 2025 parserlib/
+sm       209 Sat May 24 08:25:24 CEST 2025 module-info.class
+
+      >>> Signer
+      X.509, CN=Normen Rachel, OU=Private, O=Private, C=Germany
+      Signature algorithm: SHA384withRSA, 3072-bit RSA key
+      [certificate is valid from 29/05/2025, 20:14 to 29/05/2026, 20:14]
+      [Invalid certificate chain: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target]
+
+sm      1324 Sat May 24 09:30:58 CEST 2025 parserlib/ParseCsv.class
+
+      >>> Signer
+      X.509, CN=Normen Rachel, OU=Private, O=Private, C=Germany
+      Signature algorithm: SHA384withRSA, 3072-bit RSA key
+      [certificate is valid from 29/05/2025, 20:14 to 29/05/2026, 20:14]
+      [Invalid certificate chain: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target]
+
+
+  s = signature was verified 
+  m = entry is listed in manifest
+  k = at least one certificate was found in keystore
+
+- Signed by "CN=Normen Rachel, OU=Private, O=Private, C=Germany"
+    Digest algorithm: SHA-384
+    Signature algorithm: SHA384withRSA, 3072-bit RSA key
+
+jar verified.
+
+Warning: 
+This jar contains entries whose certificate chain is invalid. Reason: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+This jar contains entries whose signer certificate is self-signed.
+This jar contains signed entries that are not signed by alias in this keystore.
+This jar contains signatures that do not include a timestamp. Without a timestamp, users may not be able to validate this jar after any of the signer certificates expire (as early as 2026-05-29).
+
+The signer certificate will expire on 2026-05-29.
