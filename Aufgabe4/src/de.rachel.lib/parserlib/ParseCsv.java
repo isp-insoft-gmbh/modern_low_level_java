@@ -18,7 +18,7 @@ public class ParseCsv {
   }
   
   public String getHtmlTable() {
-    StringBuffer htmlTable = new StringBuffer();
+    StringBuilder htmlTable = new StringBuilder();
     
     htmlTable.append("<table>");
     
