@@ -1,0 +1,35 @@
+Project layout:
+
+source   --> source code of java modules
+output   --> build output
+keys.jks --> keystore for private key for signing
+
+Building this project:
+
+compile
+```sh
+javac @compile
+```
+package as jar
+```sh
+jar @package
+```
+sign jar
+```sh
+jarsigner @sign
+```
+clean build output
+```sh
+rm -r output/
+```
+
+Command to setup a keystore:
+```sh
+keytool -genkeypair -alias jar -keyalg RSA -keystore keys.jks -validity 365 -storepass popopo -keypass popopo -dname "cn=Oliver Jan Krylow, ou=R&D, o=isp-insoft GmbH, c=DE" 
+```
+
+Command to start jshell with `lib` module loaded:
+```sh
+jshell --module-path output/modules --add-modules lib
+```
+
