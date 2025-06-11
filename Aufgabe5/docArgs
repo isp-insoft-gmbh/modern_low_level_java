@@ -1,0 +1,5 @@
+-d documentation
+-Xdoclint:all
+-encoding utf-8
+--module de.rachel.lib
+--module-source-path .\src\
