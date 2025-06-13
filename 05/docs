@@ -1,0 +1,19 @@
+-encoding utf-8
+--module-source-path source
+--module-path output/modules
+--module lib
+--show-module-contents api
+--release 24
+-Werror
+-Xdoclint:all
+-bottom "<footer>©️ Olive Jan Krylow 2025 🖐🏻 made with ❤️ </footer>"
+-charset utf-8
+-keywords
+-linksource
+-sourcetab 2
+-docencoding utf-8
+-d output/javadoc
+-doctitle "<h1>Die gloriose <b>lib</b>-Dokumentation!</h1>"
+-helpfile README
+-use
+-windowtitle "lib-Dokumentation"
