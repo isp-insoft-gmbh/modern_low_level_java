@@ -54,4 +54,27 @@ public class ParseCsv {
     
     return htmlTable.toString();
   }
+
+  public String getHtmlSite(String title, String styleSheetFile) {
+  
+    String htmlHead = """
+<!DOCTYPE html>
+<meta http-equiv=\"content-type\" content=\"text/html; charset=UTF-8\">
+<html lang=\"de\">
+<head>
+""";
+    String htmlTitle = "<title>" + title + "</title>";
+    String htmlStyle = "";
+
+    if (!styleSheetFile.isEmpty()) {
+      htmlStyle = "<link rel=\"stylesheet\" href=\"" + styleSheetFile + "\">";
+    } else {
+      htmlStyle = "";
+    }
+
+    String htmlHeadToBody = "</head><body>";
+    String htmlBodyToEnd = "</body></html>";
+
+    return htmlHead + htmlTitle + htmlStyle + htmlHeadToBody + this.getHtmlTable() + htmlBodyToEnd;
+  }
 }

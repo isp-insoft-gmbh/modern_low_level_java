@@ -15,33 +15,20 @@ import parserlib.ParseCsv;
 /// @param --stylesheet Link to an external CSS stylesheet for styling the table
 /// @returns a HTML Document that contains the CSV Data in a Table
 public class cli {
-  private String outputfile;
+  private String outputFile;
   private String title;
-  private String stylesheetfile;
+  private String styleSheetFile;
   private final String csvToParse;
   private String htmlTable;
 
   cli(String[] args) {
-    outputfile = "";
+    outputFile = "";
     title = "CSV to HTML Table";
-    stylesheetfile = "";
-    csvToParse = args[args.length - 1];
+    styleSheetFile = "";
 
-    final var csvFilePath = java.nio.file.Paths.get(csvToParse);
-
-    try {
-      final var csvContent = java.nio.file.Files.readString(csvFilePath);
-      ParseCsv csvParser = new ParseCsv();
-      csvParser.parseCsv(csvContent);
-      htmlTable = csvParser.getHtmlTable();
-    } catch (IOException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
-
-    // the last element ist the csv file to parse
+    // the last element is the csv file to parse
     // it can be ignored here
-    for (int argsIndex = 0; argsIndex < args.length - 1; argsIndex++) {
+    for (int argsIndex = 0; argsIndex < args.length; argsIndex++) {
       switch (args[argsIndex]) {
         case "-h":
         case "--help":
@@ -50,7 +37,7 @@ public class cli {
           break;
         case "-o":
         case "--output":
-          outputfile = args[argsIndex + 1].trim();
+          outputFile = args[argsIndex + 1].trim();
           break;
         case "-t":
         case "--title":
@@ -58,14 +45,37 @@ public class cli {
           break;
         case "-s":
         case "--stylesheet":
-          stylesheetfile = args[argsIndex + 1].trim();
+          styleSheetFile = args[argsIndex + 1].trim();
           break;
         default:
           break;
       }
     }
 
+    csvToParse = args[args.length - 1];
+    
+    if (csvToParse.endsWith("csv") || csvToParse.endsWith("CSV")) {
+      final var csvFilePath = java.nio.file.Paths.get(csvToParse);
+      
+      try {
+        final var csvContent = java.nio.file.Files.readString(csvFilePath);
+        ParseCsv csvParser = new ParseCsv();
+        csvParser.parseCsv(csvContent);
 
+	String htmlSite = csvParser.getHtmlSite(title, styleSheetFile);
+        
+	if (outputFile.isEmpty()) {
+	  System.out.println(htmlSite);
+	} else {
+	
+	}
+      } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      }
+    } else {
+      System.out.println("keine CSV Datei als letztes Argument angegeben!!!");
+    }
   }
 
   /// Print the Helpfile
