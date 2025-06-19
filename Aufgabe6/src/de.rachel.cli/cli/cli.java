@@ -1,6 +1,10 @@
 package cli;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 import parserlib.ParseCsv;
 
 /// convert CSV files to HTML tables
@@ -62,15 +66,14 @@ public class cli {
         ParseCsv csvParser = new ParseCsv();
         csvParser.parseCsv(csvContent);
 
-        String htmlSite = csvParser.getHtmlSite(title, styleSheetFile);
+        String htmlSiteContent = csvParser.getHtmlSite(title, styleSheetFile);
 
         if (outputFile.isEmpty()) {
-          System.out.println(htmlSite);
+          System.out.println(htmlSiteContent);
         } else {
-
+          Files.writeString(Paths.get(outputFile), htmlSiteContent, StandardCharsets.UTF_8);
         }
       } catch (IOException e) {
-        // TODO Auto-generated catch block
         e.printStackTrace();
       }
     } else {

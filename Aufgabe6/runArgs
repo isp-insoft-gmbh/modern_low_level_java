@@ -2,4 +2,5 @@
 -m de.rachel.cli/cli.cli
 -t "neuer Titel mit anderem Inhalt"
 --stylesheet tablestyle.css
+--output table.html
 csvToParse.csv

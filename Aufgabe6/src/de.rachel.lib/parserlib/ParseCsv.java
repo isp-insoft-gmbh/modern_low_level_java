@@ -28,6 +28,7 @@ public class ParseCsv {
     StringBuilder htmlTable = new StringBuilder();
 
     htmlTable.append("<table>");
+    htmlTable.append(System.lineSeparator());
 
     for ( int zeilenNummer = 0; zeilenNummer < parsedCsv.length; zeilenNummer++ ) {
       if (zeilenNummer == 0) {
@@ -38,6 +39,7 @@ public class ParseCsv {
             htmlTable.append("</th>");
           }
         htmlTable.append("</tr></thead>");
+        htmlTable.append(System.lineSeparator());
       } else {
         if (zeilenNummer == 1) { htmlTable.append("<tbody>"); }
         htmlTable.append("<tr>");
@@ -47,10 +49,11 @@ public class ParseCsv {
             htmlTable.append("</td>");
           }
         htmlTable.append("</tr>");
+        htmlTable.append(System.lineSeparator());
       }
     }
 
-    htmlTable.append("</tbody></table>");
+    htmlTable.append("</tbody>" + System.lineSeparator() + "</table>");
 
     return htmlTable.toString();
   }
@@ -75,6 +78,6 @@ public class ParseCsv {
     String htmlHeadToBody = "</head><body>";
     String htmlBodyToEnd = "</body></html>";
 
-    return htmlHead + htmlTitle + htmlStyle + htmlHeadToBody + this.getHtmlTable() + htmlBodyToEnd;
+    return htmlHead + System.lineSeparator() + htmlTitle + System.lineSeparator() + htmlStyle + System.lineSeparator() + htmlHeadToBody + System.lineSeparator() + this.getHtmlTable() + System.lineSeparator() + htmlBodyToEnd;
   }
 }
