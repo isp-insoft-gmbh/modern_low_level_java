@@ -1,4 +1,4 @@
---module-path mods
+--module-path jar
 -m de.rachel.cli/cli.cli
 -t "neuer Titel mit anderem Inhalt"
 --stylesheet tablestyle.css

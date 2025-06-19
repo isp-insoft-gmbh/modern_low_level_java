@@ -1,1 +1,1 @@
-jshell --module-path mods --add-modules de.rachel.lib, de.rachel.cli
+jshell --module-path mods --add-modules de.rachel.cli
