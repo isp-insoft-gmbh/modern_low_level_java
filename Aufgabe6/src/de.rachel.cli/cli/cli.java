@@ -119,7 +119,7 @@ cli -o table.html -s styles.css data.csv
   }
 
   public static void main(String[] args) {
-    if (args.length > 5) {
+    if (args.length > 8) {
       System.out.println("To many Arguments. Programm will be terminated!");
       System.exit(1);
     }
