@@ -53,22 +53,22 @@ public class cli {
     }
 
     csvToParse = args[args.length - 1];
-    
+
     if (csvToParse.endsWith("csv") || csvToParse.endsWith("CSV")) {
       final var csvFilePath = java.nio.file.Paths.get(csvToParse);
-      
+
       try {
         final var csvContent = java.nio.file.Files.readString(csvFilePath);
         ParseCsv csvParser = new ParseCsv();
         csvParser.parseCsv(csvContent);
 
-	String htmlSite = csvParser.getHtmlSite(title, styleSheetFile);
-        
-	if (outputFile.isEmpty()) {
-	  System.out.println(htmlSite);
-	} else {
-	
-	}
+        String htmlSite = csvParser.getHtmlSite(title, styleSheetFile);
+
+        if (outputFile.isEmpty()) {
+          System.out.println(htmlSite);
+        } else {
+
+        }
       } catch (IOException e) {
         // TODO Auto-generated catch block
         e.printStackTrace();

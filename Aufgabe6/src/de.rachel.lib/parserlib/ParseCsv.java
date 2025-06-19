@@ -4,7 +4,7 @@ import java.util.Arrays;
 /// The Parser Class for the isp java exercise
 public class ParseCsv {
   private String[][] parsedCsv;
-  
+
   /// The constructor
   public ParseCsv() {
   }
@@ -20,15 +20,15 @@ public class ParseCsv {
       parsedCsv[zeile] = csvRows[zeile].split(";");
     }
   }
-  
+
   /// Return the parsed CSV String as an HTML Table.
   ///
   /// @return A String that contains the CSV Content as an HTML Table.
   public String getHtmlTable() {
     StringBuilder htmlTable = new StringBuilder();
-    
+
     htmlTable.append("<table>");
-    
+
     for ( int zeilenNummer = 0; zeilenNummer < parsedCsv.length; zeilenNummer++ ) {
       if (zeilenNummer == 0) {
         htmlTable.append("<thead><tr>");
@@ -49,14 +49,14 @@ public class ParseCsv {
         htmlTable.append("</tr>");
       }
     }
-    
+
     htmlTable.append("</tbody></table>");
-    
+
     return htmlTable.toString();
   }
 
   public String getHtmlSite(String title, String styleSheetFile) {
-  
+
     String htmlHead = """
 <!DOCTYPE html>
 <meta http-equiv=\"content-type\" content=\"text/html; charset=UTF-8\">
