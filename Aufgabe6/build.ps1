@@ -27,10 +27,12 @@ jarsigner -verbose -keystore keys.jks -storepass pupupu -keypass pupupu jar/de.r
 jarsigner -verbose -keystore keys.jks -storepass pupupu -keypass pupupu jar/de.rachel.lib.jar jarkey
 
 Write-Host '...verifying jars''s...'
+# java -XshowSettings is returned de for Language, but i has to use en for this call
+# but i don't know why this is nessesary, the certs was build on the same system
+# without this option....
+# where came this nessesary for verifiy from?
 jarsigner -verify "-J-Duser.language=en" -verbose -certs jar/de.rachel.cli.jar
 jarsigner -verify "-J-Duser.language=en" -verbose -certs jar/de.rachel.lib.jar
-#jarsigner -verbose -verify jar/de.rachel.cli.jar
-#jarsigner -verbose -verify jar/de.rachel.lib.jar
 
 Write-Host '..running from jars...'
 java `@runArgs
