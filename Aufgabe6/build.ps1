@@ -7,12 +7,19 @@ if (Test-Path -Path 'jar') {
     Remove-item jar -Recurse -ProgressAction SilentlyContinue
 }
 
+if (Test-Path -Path 'documentation') {
+    Remove-item documentation -Recurse -ProgressAction SilentlyContinue
+}
+
 Write-Host '...create keystore...'
 if (!(Test-Path -Path 'keys.jks')) {
     Start-Process -NoNewWindow -FilePath keytool -ArgumentList '-genkeypair', '-alias jarkey', '-keyalg Ed25519', '-keystore keys.jks', '-validity 365', '-storepass pupupu', '-keypass pupupu', '-dname "cn=Normen Rachel, ou=CS, o=isp-insoft GmbH, c=DE"' -Wait
 } else {
     Write-Host '...keyfile still exist...nothing to do...'
 }
+
+Write-Host '...create documentation...'
+javadoc `@docArgs
 
 Write-Host '...building...'
 javac `@libArgs

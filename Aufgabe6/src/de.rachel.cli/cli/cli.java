@@ -7,17 +7,6 @@ import java.nio.file.Paths;
 
 import parserlib.ParseCsv;
 
-/// convert CSV files to HTML tables
-/// @param input_file path and name of File to converted
-/// @param -h print manual
-/// @param --help print manual
-/// @param -o Specify the output HTML file. If not provided, output is written to standard output
-/// @param --output Specify the output HTML file. If not provided, output is written to standard output
-/// @param -t Set the title of the HTML document. Default is "CSV to HTML Table"
-/// @param --title Set the title of the HTML document. Default is "CSV to HTML Table"
-/// @param -s Link to an external CSS stylesheet for styling the table
-/// @param --stylesheet Link to an external CSS stylesheet for styling the table
-/// @returns a HTML Document that contains the CSV Data in a Table
 public class cli {
   private String outputFile;
   private String title;
@@ -41,15 +30,27 @@ public class cli {
           break;
         case "-o":
         case "--output":
-          outputFile = args[argsIndex + 1].trim();
+	  if (argsIndex < args.length -1) {
+            outputFile = args[++argsIndex].trim();
+	  } else {
+	    System.err.println("Kein Wert zum Argument gefunden. Argumentliste ausgeschöpft!");
+	  }
           break;
         case "-t":
         case "--title":
-          title = args[argsIndex + 1].trim();
+          if (argsIndex < args.length -1) {
+            title = args[++argsIndex].trim();
+	  } else {
+	    System.err.println("Kein Wert zum Argument gefunden. Argumentliste ausgeschöpft!");
+	  }
           break;
         case "-s":
         case "--stylesheet":
-          styleSheetFile = args[argsIndex + 1].trim();
+          if (argsIndex < args.length -1) {
+            styleSheetFile = args[++argsIndex].trim();
+	  } else {
+	    System.err.println("Kein Wert zum Argument gefunden. Argumentliste ausgeschöpft!");    
+          }
           break;
         default:
           break;
@@ -75,60 +76,43 @@ public class cli {
         }
       } catch (IOException e) {
         e.printStackTrace();
+	System.exit(1);
       }
     } else {
-      System.out.println("keine CSV Datei als letztes Argument angegeben!!!");
+      System.err.println("keine CSV Datei als letztes Argument angegeben!!!");
     }
   }
 
-  /// Print the Helpfile
   private void printManualPage() {
     final var manual = """
-CLI(1) Manual Page
+    CLI(1) Manual Page
 
-NAME
-cli - convert CSV files to HTML tables
+    NAME
+    cli - convert CSV files to HTML tables
 
-SYNOPSIS
-cli [options] input_file
+    SYNOPSIS
+    cli [options] input_file
 
-DESCRIPTION
-The cli command reads a CSV (Comma-Separated Values) file and outputs an HTML table representation of its contents.
-OPTIONS
+    DESCRIPTION
+    The cli command reads a CSV (Comma-Separated Values) file and outputs an HTML table representation of its contents.
+    OPTIONS
 
--h, --help Display this help message and exit.
-
--o, --output Specify the output HTML file. If not provided, output is written to standard output.
-
--t, --title Set the title of the HTML document. Default is "CSV to HTML Table".
-
--s, --stylesheet Link to an external CSS stylesheet for styling the table.
-
-EXAMPLES
-
-Convert data.csv to an HTML table and write to standard output:
-
-cli data.csv
-
-Convert data.csv to table.html with a custom title:
-
-cli -o table.html -t "My Data Table" data.csv
-
-Convert data.csv to table.html with an external stylesheet:
-
-cli -o table.html -s styles.css data.csv
-""";
-        System.out.print(manual);
+    -h, --help Display this help message and exit.
+    -o, --output Specify the output HTML file. If not provided, output is written to standard output.
+    -t, --title Set the title of the HTML document. Default is "CSV to HTML Table".
+    -s, --stylesheet Link to an external CSS stylesheet for styling the table.
+    """;
+    System.out.print(manual);
   }
 
   public static void main(String[] args) {
     if (args.length > 8) {
-      System.out.println("To many Arguments. Programm will be terminated!");
+      System.err.println("To many Arguments. Programm will be terminated!");
       System.exit(1);
     }
 
     if (args.length < 1) {
-      System.out.println("To few Arguments. Give at minimum the CSV File that should be parsed");
+      System.err.println("To few Arguments. Give at minimum the CSV File that should be parsed");
       System.exit(1);
     }
 

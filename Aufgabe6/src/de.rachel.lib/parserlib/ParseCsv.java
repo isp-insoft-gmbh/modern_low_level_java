@@ -57,7 +57,14 @@ public class ParseCsv {
 
     return htmlTable.toString();
   }
-
+  
+  /// Function that return a the whole html File as a String
+  ///
+  /// @param title a String that represented the titel of html site
+  /// @param styleSheetFile a String that define the Name of the stylesheetfile
+  /// that can contain also pathinformation
+  ///
+  /// @return Return the a string that contain the whole html file
   public String getHtmlSite(String title, String styleSheetFile) {
 
     String htmlHead = """
