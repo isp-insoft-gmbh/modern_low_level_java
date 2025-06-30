@@ -1,0 +1,6 @@
+-d documentation
+-Xdoclint:all
+-encoding utf-8
+--module de.rachel.lib,de.rachel.cli
+--module-source-path .\src\
+--show-module-contents all
