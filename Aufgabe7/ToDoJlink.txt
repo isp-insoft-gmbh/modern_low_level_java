@@ -1,0 +1,17 @@
+# list the dependent modules of my program
+jdeps --module-path mods -s --module de.rachel.cli
+
+# output
+de.rachel.cli -> de.rachel.lib
+de.rachel.cli -> java.base
+
+# custom runtime erzeugen
+jlink @linkArgs
+
+# run the cli module in custom jre
+.\java.exe -m de.rachel.cli/cli.cli -h
+
+# test customjre
+# change to bin dir of custom jre
+# use the created batch file (launcher option from linkArgs
+.\csvparser.bat --title "test titel" --output ../../testFromcustomJar.html ..\..\csvToParse.csv

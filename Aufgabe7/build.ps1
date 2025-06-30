@@ -1,14 +1,22 @@
 Write-host '...cleaning...'
 if (Test-Path -Path 'mods') {
+    Write-Host '..remove mods..'
     Remove-item mods -Recurse -ProgressAction SilentlyContinue
 }
 
 if (Test-Path -Path 'jar') {
+    Write-Host '..remove jar..'
     Remove-item jar -Recurse -ProgressAction SilentlyContinue
 }
 
 if (Test-Path -Path 'documentation') {
+    Write-Host '..remove documentation..'
     Remove-item documentation -Recurse -ProgressAction SilentlyContinue
+}
+
+if (Test-Path -Path 'customjre') {
+    Write-Host '..remove customjre..'
+    Remove-item customjre -Recurse -ProgressAction SilentlyContinue
 }
 
 Write-Host '...create keystore...'
@@ -41,5 +49,8 @@ Write-Host '...verifying jars''s...'
 jarsigner -verify "-J-Duser.language=en" -verbose -certs jar/de.rachel.cli.jar
 jarsigner -verify "-J-Duser.language=en" -verbose -certs jar/de.rachel.lib.jar
 
-Write-Host '..running from jars...'
-java `@runArgs
+Write-Host '...creating custom jre...'
+jlink `@linkArgs 
+
+#Write-Host '..running from jars...'
+#java `@runArgs

@@ -30,3 +30,4 @@ scratch.txt
 jdk24Path.sh
 build.sh
 mods/*
+customjre/
