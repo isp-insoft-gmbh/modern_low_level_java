@@ -1,22 +1,22 @@
 Write-host '...cleaning...'
 if (Test-Path -Path 'mods') {
     Write-Host '..remove mods..'
-    Remove-item mods -Recurse -ProgressAction SilentlyContinue
+    Remove-Item mods -Recurse -Force -ProgressAction SilentlyContinue
 }
 
 if (Test-Path -Path 'jar') {
     Write-Host '..remove jar..'
-    Remove-item jar -Recurse -ProgressAction SilentlyContinue
+    Remove-Item jar -Recurse -Force -ProgressAction SilentlyContinue
 }
 
 if (Test-Path -Path 'documentation') {
     Write-Host '..remove documentation..'
-    Remove-item documentation -Recurse -ProgressAction SilentlyContinue
+    Remove-Item documentation -Recurse -Force -ProgressAction SilentlyContinue
 }
 
 if (Test-Path -Path 'customjre') {
     Write-Host '..remove customjre..'
-    Remove-item customjre -Recurse -ProgressAction SilentlyContinue
+    Remove-Item customjre -Recurse -Force -ProgressAction SilentlyContinue
 }
 
 Write-Host '...create keystore...'
@@ -49,8 +49,13 @@ Write-Host '...verifying jars''s...'
 jarsigner -verify "-J-Duser.language=en" -verbose -certs jar/de.rachel.cli.jar
 jarsigner -verify "-J-Duser.language=en" -verbose -certs jar/de.rachel.lib.jar
 
-Write-Host '...creating custom jre...'
-jlink `@linkArgs 
+#Write-Host '...creating custom jre...'
+#jlink `@linkArgs 
+
+Write-Host '...creating package...'
+jpackage `@jpackArgs
+Write-Host 'Under Linux you can install the Package with "sudo dpkg -i <packagefilename>"'
+Write-Host 'and uninstall with "sudo dpkg -r <packagename>"'
 
 #Write-Host '..running from jars...'
 #java `@runArgs
