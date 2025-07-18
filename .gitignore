@@ -32,4 +32,4 @@ jdk24Path.sh
 build.sh
 mods/*
 customjre/
-documentaiton/
+documentation/

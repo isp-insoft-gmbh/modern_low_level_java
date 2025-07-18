@@ -1,0 +1,5 @@
+--launcher csvparser=de.rachel.cli/cli.Cli
+--ignore-signing-information
+--module-path mods
+--add-modules de.rachel.cli
+--output customjre-Cli

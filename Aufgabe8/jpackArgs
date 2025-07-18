@@ -1,0 +1,4 @@
+--input jar
+--main-jar de.rachel.cli.jar
+--name RachelCsvParser
+--main-class cli.Cli
