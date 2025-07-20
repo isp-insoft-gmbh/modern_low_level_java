@@ -10,6 +10,9 @@ Frameworks). Allerdings fußen all diese Tools auf einem Fundament: der JDK.
 
 Deshalb lohnt es sich ein solides Verständnis der JDK zu erlangen.
 
+Es gibt keine Regeln bezüglich Hilfsmittel und/oder Kooperation.
+Gerne kann eine KI oder Kolleg:innen zu Rate gezogen werden!
+
 ## Versionskontrolle
 
 Offensichtlich wird dieses Projekt in GIT getrackt.
@@ -21,6 +24,8 @@ und nutze diesen während des Kurses, um deinen Fortschritt zu synchronisieren.
 git branch NAME
 # zum branch wechseln
 git switch NAME
+# unversionierte Änderungen zu git hinzufügen
+git add .
 # lokalen commit erzeugen mit allen lokalen Änderungen
 git commit --all
 # branch hochladen
@@ -45,7 +50,7 @@ diese als HTML-Tabelle rendert und serviert.
 
 ## Voraussetzungen
 
-- [JDK 23](https://jdk.java.net/23/)
+- [JDK 24](https://jdk.java.net/24/)
 - Ein simpler Editor
 - Terminal
 
@@ -81,23 +86,23 @@ Aber da es in der JDK kein Tool dafür gibt, ignorieren wir das Thema erst mal.
 In jeder Phase kommen unterschiedliche Tools des JDKs zum Einsatz.
 
 - Code & Debug
-    - [javac](https://docs.oracle.com/en/java/javase/23/docs/specs/man/javac.html)
-    - [java](https://docs.oracle.com/en/java/javase/23/docs/specs/man/java.html)
-    - [javap](https://docs.oracle.com/en/java/javase/23/docs/specs/man/javap.html)
-    - [jdb](https://docs.oracle.com/en/java/javase/23/docs/specs/man/jdb.html)
-    - [jconsole](https://docs.oracle.com/en/java/javase/23/docs/specs/man/jconsole.html)
-    - [jps](https://docs.oracle.com/en/java/javase/23/docs/specs/man/jps.html)
-    - [jinfo](https://docs.oracle.com/en/java/javase/23/docs/specs/man/jinfo.html)
-    - [jstack](https://docs.oracle.com/en/java/javase/23/docs/specs/man/jstack.html)
-    - [jshell](https://docs.oracle.com/en/java/javase/23/docs/specs/man/jshell.html)
+    - [javac](https://docs.oracle.com/en/java/javase/24/docs/specs/man/javac.html)
+    - [java](https://docs.oracle.com/en/java/javase/24/docs/specs/man/java.html)
+    - [javap](https://docs.oracle.com/en/java/javase/24/docs/specs/man/javap.html)
+    - [jdb](https://docs.oracle.com/en/java/javase/24/docs/specs/man/jdb.html)
+    - [jconsole](https://docs.oracle.com/en/java/javase/24/docs/specs/man/jconsole.html)
+    - [jps](https://docs.oracle.com/en/java/javase/24/docs/specs/man/jps.html)
+    - [jinfo](https://docs.oracle.com/en/java/javase/24/docs/specs/man/jinfo.html)
+    - [jstack](https://docs.oracle.com/en/java/javase/24/docs/specs/man/jstack.html)
+    - [jshell](https://docs.oracle.com/en/java/javase/24/docs/specs/man/jshell.html)
 - Library Release
-    - [jar](https://docs.oracle.com/en/java/javase/23/docs/specs/man/jar.html)
-    - [jarsigner](https://docs.oracle.com/en/java/javase/23/docs/specs/man/jarsigner.html)
-    - [javadoc](https://docs.oracle.com/en/java/javase/23/docs/specs/man/javadoc.html)
+    - [jar](https://docs.oracle.com/en/java/javase/24/docs/specs/man/jar.html)
+    - [jarsigner](https://docs.oracle.com/en/java/javase/24/docs/specs/man/jarsigner.html)
+    - [javadoc](https://docs.oracle.com/en/java/javase/24/docs/specs/man/javadoc.html)
 - App Release
-    - [jlink](https://docs.oracle.com/en/java/javase/23/docs/specs/man/jlink.html)
-    - [jpackage](https://docs.oracle.com/en/java/javase/23/docs/specs/man/jpackage.html)
-    - [jstat](https://docs.oracle.com/en/java/javase/23/docs/specs/man/jstat.html)
+    - [jlink](https://docs.oracle.com/en/java/javase/24/docs/specs/man/jlink.html)
+    - [jpackage](https://docs.oracle.com/en/java/javase/24/docs/specs/man/jpackage.html)
+    - [jstat](https://docs.oracle.com/en/java/javase/24/docs/specs/man/jstat.html)
 
 > Es wird von dir erwartet, daß du die obigen Spezifikationen zu rate ziehst, um die
 > folgenden Aufgaben zu lösen.
@@ -123,8 +128,8 @@ Die Aufteilung der Applikation in diese Module wird einige Java Features demonst
 und Gelegenheit bieten, gängige Muster zu nutzen.
 
 - [Java Module System](https://openjdk.org/projects/jigsaw/quick-start)
-- [Command-Line Argument Files](https://docs.oracle.com/en/java/javase/23/docs/specs/man/java.html#java-command-line-argument-files)
-- [JShell](https://docs.oracle.com/en/java/javase/23/jshell/introduction-jshell.html)
+- [Command-Line Argument Files](https://docs.oracle.com/en/java/javase/24/docs/specs/man/java.html#java-command-line-argument-files)
+- [JShell](https://docs.oracle.com/en/java/javase/24/jshell/introduction-jshell.html)
 
 > Es gibt viele Aspekte eines Software-Projekts, die in diesem Kurs absichtlich
 > undefiniert gelassen wurden: zum Beispiel _Projektlayout_.
@@ -134,10 +139,10 @@ und Gelegenheit bieten, gängige Muster zu nutzen.
 
 Als statische Code Analyse sollen die folgenden Werkzeuge der JDK eingesetzt werden:
 
-- [`javac -Xlint:all `](https://docs.oracle.com/en/java/javase/23/docs/specs/man/javac.html#extra-options)
-- [`javadoc -Xdoclint:all`](https://docs.oracle.com/en/java/javase/23/docs/specs/man/javadoc.html#extra-javadoc-options)
+- [`javac -Xlint:all `](https://docs.oracle.com/en/java/javase/24/docs/specs/man/javac.html#extra-options)
+- [`javadoc -Xdoclint:all`](https://docs.oracle.com/en/java/javase/24/docs/specs/man/javadoc.html#extra-javadoc-options)
 
-Das JavaDoc soll im [Markdown-Format](https://docs.oracle.com/en/java/javase/23/javadoc/using-markdown-documentation-comments.html) verfaßt werden.
+Das JavaDoc soll im [Markdown-Format](https://docs.oracle.com/en/java/javase/24/javadoc/using-markdown-documentation-comments.html) verfaßt werden.
 
 ## Step By Step
 
@@ -153,7 +158,7 @@ Sitzung behandeln können.
 
 ### 1. JShell kennenlernen
 
-1. Überfliege den [Java Shell User’s Guide](https://docs.oracle.com/en/java/javase/23/jshell/) und halte diesen als Referenz bereit.
+1. Überfliege den [Java Shell User’s Guide](https://docs.oracle.com/en/java/javase/24/jshell/) und halte diesen als Referenz bereit.
 2. Nutze JShell, um eine Funktion zu entwickeln, die einen CSV-String zu einer tabellarischen Datenstruktur parst:
    `String[][] parseCsv( String input ) throws IllegalArgumentException;`.
 3. Sobald du mit der Implementierung zufrieden bist, speichere die Funktion als JShell-Script.
@@ -184,7 +189,7 @@ Sitzung behandeln können.
    javap(E.class)
    javap(R.class)
    ```
-    Nutze [The Java® Virtual Machine Specification](https://docs.oracle.com/javase/specs/jvms/se23/html/index.html) als Nachschlagewerk.
+    Nutze [The Java® Virtual Machine Specification](https://docs.oracle.com/javase/specs/jvms/se24/html/index.html) als Nachschlagewerk.
 3. Was ist der Unterschied zwischen `<init>` und `<clinit>`? Warum existieren diese in manchen Typen und anderen nicht?
 4. Vergleiche die folgenden Klassen in `javap`:
    ```java
@@ -221,7 +226,7 @@ Dritte verteilt werden:
    für `cli` und `server`
    > Das Ziel ist: Eine CSV-Datei als HTML Tabelle darzustellen
 2. Packe das Modul in eine _JAR_ mit `jar`.
-3. Signiere die _JAR_ mit `jarsigner` und einem [persönlichen Schlüssel](https://docs.oracle.com/en/java/javase/23/docs/specs/man/keytool.html#examples-of-tasks-in-creating-a-keystore)
+3. Signiere die _JAR_ mit `jarsigner` und einem [persönlichen Schlüssel](https://docs.oracle.com/en/java/javase/24/docs/specs/man/keytool.html#examples-of-tasks-in-creating-a-keystore)
 
 ### 5. JavaDoc
 
