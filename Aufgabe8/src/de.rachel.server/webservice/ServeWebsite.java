@@ -3,25 +3,23 @@ package webservice;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import com.sun.net.httpserver.*;
-import parserlib.ParseCsv;
 
 public class ServeWebsite {
-    ServeWebsite() {
-
-    }
+    ServeWebsite() {}
 
     public static void main(String[] args) {
 
         try {
             HttpServer server = HttpServer.create(new InetSocketAddress("localhost", 8001), 0);
             HttpContext context = server.createContext("/");
+            HttpContext cssContext = server.createContext("/style.css");
             context.setHandler(new MyHttpHandler());
+            cssContext.setHandler(new CssHttpHandler());
             server.start();
-            System.out.println(" Server started on port 8001");
+            System.out.println("Server started on port 8001");
 
         } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            System.err.println(e.getMessage());
         }
     }
 }
