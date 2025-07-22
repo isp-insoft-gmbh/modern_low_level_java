@@ -50,7 +50,7 @@ public class MyHttpHandler implements HttpHandler {
             }
 
             if (readedBlankLines == 1) {
-              csvContent.append(data + '\n');
+              csvContent.append(data + System.lineSeparator());
             }
 
           }
