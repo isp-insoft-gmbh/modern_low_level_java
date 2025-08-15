@@ -24,6 +24,16 @@ if (Test-Path -Path 'customjre') {
     Remove-Item customjre -Recurse -Force -ProgressAction SilentlyContinue
 }
 
+if (Test-Path -Path 'RachelCsvParser') {
+    Write-Host '..remove old CLI App..'
+    Remove-Item RachelCsvParser -Recurse -Force -ProgressAction SilentlyContinue
+}
+
+if (Test-Path -Path 'RachelCsvParserServer') {
+    Write-Host '..remove old Server App..'
+    Remove-Item RachelCsvParserServer -Recurse -Force -ProgressAction SilentlyContinue
+}
+
 Write-Host '...create keystore...'
 if (!(Test-Path -Path 'keys.jks')) {
     Start-Process -NoNewWindow -FilePath keytool -ArgumentList '-genkeypair', '-alias jarkey', '-keyalg Ed25519', '-keystore keys.jks', '-validity 365', '-storepass pupupu', '-keypass pupupu', '-dname "cn=Normen Rachel, ou=CS, o=isp-insoft GmbH, c=DE"' -Wait
@@ -61,8 +71,16 @@ jarsigner -verify "-J-Duser.language=en" -verbose -certs jar/de.rachel.server.ja
 #Write-Host '...creating custom jre...'
 #jlink `@cliLinkArgs
 
-Write-Host '...creating package...'
-#jpackage `@jpackArgs
+Write-Host '...creating CLI App...'
+jpackage `@jpackArgs
+Write-Host '...creating Server App...'
+jpackage `@serverJpackArgs
+
+Write-Host '####### WIN INFO#########"'
+Write-Host 'Under run the Setup and follow the instruktions'
+Write-Host 'To uninstall it use your Software Dashboard'
+Write-Host '#########################"'
+Write-Host '####### LINUX INFO#######"'
 Write-Host 'Under Linux you can install the Package with "sudo dpkg -i <packagefilename>"'
 Write-Host 'and uninstall with "sudo dpkg -r <packagename>"'
 

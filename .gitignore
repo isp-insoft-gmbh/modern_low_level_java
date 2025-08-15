@@ -34,3 +34,4 @@ mods/*
 customjre/
 documentation/
 RachelCsvParser/
+RachelCsvParserServer/
