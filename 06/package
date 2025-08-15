@@ -1,0 +1,7 @@
+--verbose
+--create
+--file output/lib.jar
+--module-version 0.0.0
+--module-path output/modules
+-C output/modules/lib .
+--release 24

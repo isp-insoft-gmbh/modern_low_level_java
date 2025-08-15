@@ -1,0 +1,16 @@
+--type app-image
+--dest output/distribution
+--temp output/jpackage_temp
+
+--name tabbel
+--app-version "0.0.0.0"
+--copyright "2025 isp-insoft GmbH"
+--description "Kommandozeilentool für HTML-Tabellen"
+--vendor "isp-insoft GmbH"
+
+--add-modules lib
+--module cli/tool.Tabbel
+--module-path output/modules
+
+--win-console
+
