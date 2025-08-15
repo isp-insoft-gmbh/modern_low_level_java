@@ -19,6 +19,11 @@ if (Test-Path -Path 'customjre') {
     Remove-Item customjre -Recurse -Force -ProgressAction SilentlyContinue
 }
 
+if (Test-Path -Path 'RachelCsvParser') {
+    Write-Host '..remove old APP..'
+    Remove-Item RachelCsvParser -Recurse -Force -ProgressAction SilentlyContinue
+}
+
 Write-Host '...create keystore...'
 if (!(Test-Path -Path 'keys.jks')) {
     Start-Process -NoNewWindow -FilePath keytool -ArgumentList '-genkeypair', '-alias jarkey', '-keyalg Ed25519', '-keystore keys.jks', '-validity 365', '-storepass pupupu', '-keypass pupupu', '-dname "cn=Normen Rachel, ou=CS, o=isp-insoft GmbH, c=DE"' -Wait
@@ -50,7 +55,7 @@ jarsigner -verify "-J-Duser.language=en" -verbose -certs jar/de.rachel.cli.jar
 jarsigner -verify "-J-Duser.language=en" -verbose -certs jar/de.rachel.lib.jar
 
 #Write-Host '...creating custom jre...'
-#jlink `@linkArgs 
+jlink `@linkArgs 
 
 Write-Host '...creating package...'
 jpackage `@jpackArgs

@@ -33,3 +33,4 @@ build.sh
 mods/*
 customjre/
 documentation/
+RachelCsvParser/
