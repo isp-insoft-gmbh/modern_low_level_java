@@ -1,6 +1,37 @@
+# setting some Paths
+$JDKPATHLINUX='/usr/lib/jvm/jdk-24.0.1'
+$JDKPATHWINDOWS='C:\Users\Public\D\jdk-24.0.1'
+
+# for Timemesure
+$startTime = Get-Date
+
+Write-Host '...setting the JAVA ENVs...'
+if ($IsLinux) {
+    if (Test-Path -Path $JDKPATHLINUX) {
+        $env:JAVA_HOME = $JDKPATHLINUX
+        $env:JAVA_HOME
+        $env:PATH = $env:JAVA_HOME + "/bin:" + $env:PATH
+        $env:PATH
+    } else {
+        Write-Host '...JDK Path '$JDKPATHLINUX' not found'
+        Exit
+    }
+
+} else {
+    if (Test-Path -Path $JDKPATHWINDOWS) {
+        $env:JAVA_HOME = $JDKPATHWINDOWS
+        $env:JAVA_HOME
+        $env:PATH = $env:JAVA_HOME + "\bin:" + $env:PATH
+        $env:PATH
+    } else {
+        Write-Host '...JDK Path '$JDKPATHWINDOWS' not found'
+        Exit
+    }
+}
+
 if ($null -eq $env:JAVA_HOME) {
-    Write-Host '..setting first the JAVA_HOME!!!'
-    Exit-PSSession
+    Write-Host '..setting first the JAVA_HOME ENV!!!'
+    Exit
 }
 
 Write-host '...cleaning...'
@@ -72,17 +103,37 @@ jarsigner -verify "-J-Duser.language=en" -verbose -certs jar/de.rachel.server.ja
 #jlink `@cliLinkArgs
 
 Write-Host '...creating CLI App...'
-jpackage `@jpackArgs
-Write-Host '...creating Server App...'
-jpackage `@serverJpackArgs
+if ($IsLinux) {
+    Write-Host '...for Linux...'
+    jpackage `@jpackArgs `@jpackLinuxArgs
+} else {
+    Write-Host '...for Windows...'
+    jpackage `@jpackArgs `@jpackWindowsArgs
+}
 
-Write-Host '####### WIN INFO#########"'
-Write-Host 'Under run the Setup and follow the instruktions'
-Write-Host 'To uninstall it use your Software Dashboard'
-Write-Host '#########################"'
-Write-Host '####### LINUX INFO#######"'
-Write-Host 'Under Linux you can install the Package with "sudo dpkg -i <packagefilename>"'
-Write-Host 'and uninstall with "sudo dpkg -r <packagename>"'
+Write-Host '...creating Server App...'
+if ($IsLinux) {
+    Write-Host '...for Linux...'
+    jpackage `@serverJpackArgs `@serverJpackLinuxArgs
+} else {
+    Write-Host '...for Windows...'
+    jpackage `@serverJpackArgs `@serverJpackWindowsArgs
+}
+
+# make only sense when jpackage creates a setup not an app-image
+#Write-Host '####### WIN INFO#########"'
+#Write-Host 'Under run the Setup and follow the instruktions'
+#Write-Host 'To uninstall it use your Software Dashboard'
+#Write-Host '#########################"'
+#Write-Host '####### LINUX INFO#######"'
+#Write-Host 'Under Linux you can install the Package with "sudo dpkg -i <packagefilename>"'
+#Write-Host 'and uninstall with "sudo dpkg -r <packagename>"'
 
 #Write-Host '..running from jars...'
 #java `@runArgs
+
+
+# show the used time for the Buildprocess
+$endTime = Get-Date
+$duration = New-TimeSpan -Start $startTime -End $endTime
+Write-Host '===Ausführungszeit: '$($duration.TotalSeconds)' Sekunden==='

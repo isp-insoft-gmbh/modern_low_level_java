@@ -1,13 +1,5 @@
-# old stuff with jar
-#--input jar
-#--main-jar de.rachel.cli.jar
-#--main-class cli.Cli
-
 --type app-image
 --module-path mods
 --add-modules de.rachel.lib
---module de.rachel.cli/cli.cli
+--module de.rachel.cli/cli.Cli
 --name RachelCsvParser
-
-# special for an Win CLI tool
---win-console
