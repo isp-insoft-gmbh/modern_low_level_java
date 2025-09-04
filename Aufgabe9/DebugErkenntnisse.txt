@@ -1,0 +1,18 @@
+JINFO
+- bringt viele Infos zur laufenden Instanz wie VM Argumente, VM Flags usw
+- man kann auch gut sehen, da wir auf Module gesetzt haben das die Info über den alten CLASSPATH leer bzw. notset bleibt
+
+JSTACK
+- kann ich keine Infos erkennen die mir in Bezug auf mein laufendes Programm was sagen, da ich keine Bezeichner
+  finden kann die wie in meinem Programm lauten
+
+JCONSOLE
+- musste den Server direkt aus dem Modul starten mit java und dem serverRunArgs, ansonsten ist konnte sich JCONSOLE
+  nicht mit dem Prozess verbinden
+- Bringt die Infos von JINFO und JSTACK gut betrachtbar zusammen
+- einen expliziten Hinweis auf Teile meines Programms habe ich aber dennoch nicht gefunden
+
+JDB
+- zuvor den Server mit dem Argument -g compiliert, damit werden debuginfos mit in den Quellcode eingebracht (variablennamen, zeilen usw.)
+- mit jdb `@serverRunArgs gestartet aber habe es nicht hinbekommen auch nur ansatzweise einen Breakpoint zu nutzen
+geschweige denn Variableninhalt mit print auszugeben

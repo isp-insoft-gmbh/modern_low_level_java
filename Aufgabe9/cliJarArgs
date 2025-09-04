@@ -1,0 +1,4 @@
+--create
+--verbose
+--file ./jar/de.rachel.cli.jar
+-C ./mods/de.rachel.cli .

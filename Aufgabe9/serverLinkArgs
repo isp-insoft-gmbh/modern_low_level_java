@@ -1,0 +1,5 @@
+--launcher webservice=de.rachel.cli/webservice.cli
+--ignore-signing-information
+--module-path mods
+--add-modules de.rachel.server
+--output customjre-server

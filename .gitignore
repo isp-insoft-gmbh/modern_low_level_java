@@ -28,7 +28,8 @@ replay_pid*
 startjshell.sh
 test.jsh
 scratch.txt
-jdk24Path.sh
+jdk24PathLinux.ps1
+jdk24PathWin.ps1
 build.sh
 mods/*
 customjre/
