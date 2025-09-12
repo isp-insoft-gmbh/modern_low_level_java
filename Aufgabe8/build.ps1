@@ -1,3 +1,18 @@
+# Param(
+#     [string]$arg1,
+#     [string]$arg2
+# )
+# if ($PSBoundParameters.ContainsKey('arg1')) {
+#     Write-Host "The first argument is $($PSBoundParameters['arg1'])"
+# } else {
+#     Write-Host "No arguments were passed for arg1"
+# }
+# if ($PSBoundParameters.ContainsKey('arg2')) {
+#     Write-Host "The second argument is $($PSBoundParameters['arg2'])"
+# } else {
+#     Write-Host "No arguments were passed for arg2"
+# }
+
 Param (
     [Parameter(Position=0)]
     [bool] $WithDoc = $false,

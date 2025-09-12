@@ -15,6 +15,7 @@ public class ServeWebsite {
             HttpContext cssContext = server.createContext("/style.css");
             context.setHandler(new MyHttpHandler());
             cssContext.setHandler(new CssHttpHandler());
+            // start an deamon process
             server.start();
             System.out.println("Server started on port 8001");
 
