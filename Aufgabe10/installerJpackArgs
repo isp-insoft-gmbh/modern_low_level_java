@@ -1,0 +1,7 @@
+--app-version "0.1"
+--description "SuperServer to parse your CSV into an Table"
+--icon "installerIconServer.ico"
+--module-path mods
+--add-modules de.rachel.lib
+--module de.rachel.server/webservice.ServeWebsite
+--name RachelCsvParserServer

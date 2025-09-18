@@ -1,0 +1,6 @@
+--type app-image
+--module-path mods
+--add-modules de.rachel.lib
+--module de.rachel.server/webservice.ServeWebsite
+--name RachelCsvParserServer
+# --java-options -Dcom.sun.management.jmxremote

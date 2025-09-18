@@ -1,0 +1,6 @@
+--module-path jar
+-m de.rachel.cli/cli.Cli
+-t "neuer Titel mit anderem Inhalt"
+--stylesheet tablestyle.css
+--output table.html
+csvToParse.csv
